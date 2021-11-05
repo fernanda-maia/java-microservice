@@ -48,4 +48,10 @@ public class CouponController {
         return this.service.updateCoupon(uuid, couponDTO);
     }
 
+    @DeleteMapping(path = "/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    public PostResponseDTO delete(@PathVariable UUID uuid) {
+        return this.service.deleteCoupon(uuid);
+    }
+
 }

@@ -94,4 +94,17 @@ public class CouponService {
 
         return new PostResponseDTO(uuid, "Coupon Updated Successfully!");
     }
+
+    @Transactional(readOnly = false)
+    public PostResponseDTO deleteCoupon(UUID uuid) {
+        Optional<Coupon> optional = this.repository.findById(uuid);
+
+        if(optional.isEmpty()) {
+            throw new CouponNotFoundException();
+        }
+
+        this.repository.deleteById(uuid);
+
+        return new PostResponseDTO(uuid, "Coupon deleted Successfully!");
+    }
 }
