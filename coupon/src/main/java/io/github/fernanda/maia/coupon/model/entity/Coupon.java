@@ -4,7 +4,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import org.hibernate.annotations.NaturalId;
+import org.hibernate.annotations.GenericGenerator;
 
+import java.util.UUID;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.math.BigDecimal;
@@ -17,8 +19,9 @@ import java.math.BigDecimal;
 public class Coupon {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    private UUID uuid;
 
     @NaturalId
     @Column(nullable = false, unique = true, length = 6)

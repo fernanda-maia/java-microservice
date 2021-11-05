@@ -1,4 +1,4 @@
-package io.github.fernanda.maia.coupon.model.request.dto;
+package io.github.fernanda.maia.coupon.model.dto.request;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
