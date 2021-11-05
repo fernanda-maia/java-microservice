@@ -1,12 +1,15 @@
-package io.github.fernanda.maia.coupon.model.dto;
+package io.github.fernanda.maia.coupon.model.request.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.util.UUID;
 import java.time.LocalDate;
 import java.math.BigDecimal;
 
@@ -15,16 +18,16 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class CouponDTO {
 
-    private Long id;
+    private UUID uuid;
 
     @NotEmpty
     @Size(min = 6, max = 6)
     private String code;
 
-    @NotEmpty
+    @NotNull
     private BigDecimal discount;
 
-    @NotEmpty
+    @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate expireDate;
 }
